@@ -1,0 +1,32 @@
+<html>
+<head>
+    <script src="https://fb.me/react-0.14.8.js"></script><!-- react core library -->
+    <script src="https://fb.me/react-dom-0.14.8.js"></script><!-- used to render -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script><!-- allows us to write jsx directly -->
+</head>
+<body>
+</body>
+<script type="text/jsx">
+    // define a react component class
+    var HelloWorld = React.createClass({
+        render: function(){
+            return <div>
+                Hello Dude!
+                <form>
+                    <select>
+                        <option>as</option>
+                    </select>
+                </form>
+            </div>
+        }
+    });
+    
+    // Ask react to render class
+    var element = React.createElement(HelloWorld);
+    
+    // Ask react to render this class, we will tell it 
+    // where to place the rendered element in the DOM
+    ReactDOM.render(element, document.body);
+    
+</script>
+</html>
