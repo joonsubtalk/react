@@ -1,0 +1,53 @@
+<html>
+<head>
+    <script src="https://fb.me/react-0.14.8.js"></script><!-- react core library -->
+    <script src="https://fb.me/react-dom-0.14.8.js"></script><!-- used to render -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script><!-- allows us to write jsx directly -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 target">
+
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/jsx">
+  var Badge = React.createClass({
+    render: function() {
+      return <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.number}</span>
+      </button>
+    }
+  })
+
+  var Thumbnail = React.createClass({
+    render: function() {
+      return <div className="thumbnail">
+        <img src={this.props.imageURL} alt="{this.props.header}" />
+        <div className="caption">
+          <h3>{this.props.header}</h3>
+          <p>{this.props.description}</p>
+          <Badge title={this.props.title} number={this.props.number}/>
+        </div>
+      </div>
+    }
+  })
+
+  var options = {
+    description: 'Look ma no work! There ain\'t no Angular stuff here kids. This is the real deal between the R vs the A.',
+    header: 'React So Cool',
+    imageURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/React.js_logo.svg/600px-React.js_logo.svg.png',
+    number: 5,
+    title: 'Inbox',
+  }
+
+  var element = React.createElement(Thumbnail, options);
+
+  React.render(element, document.querySelector('.target'));
+
+</script>
+</html>
