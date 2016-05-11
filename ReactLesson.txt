@@ -1,0 +1,79 @@
+#video01
+
+*** IMPERATIVE VS DECLARATIVE ***
+imperative: how you're going to do something.
+declarative: what you want to do.
+
+// imperative (How)
+var numbers = [2,5,3];
+var total = 0;
+for (var i = 0; i < numbers.length; i++){
+  total += numbers[i];
+}
+
+// declarative (What)
+var numbers = [2,5,3];
+numbers.reduce(function (previous,current){
+  return previous + current
+})
+
+Keythings about functional programming:
+- reduces side effects
+- minimize mutability
+- readable code
+- less bugs
+
+React is declarative for the most part...
+
+// imperative (how we want to do it) state is in DOM
+$('#awesome-btn').click(function(){
+  $(this).toggleClass('highlight')
+  $(this).text() === 'highlightMe'
+    ? $(this).text('rmHighlight')
+    : $(this).text('addHighlight')
+});
+
+//declarative (what we want it to look like) state abstracted out of DOM
+<AwesomeBtn
+  onToggleHighlight={this.handleToggleHighlight}
+  highlight={this.state.highlight}>
+    {this.state.buttonText}
+</AwesomeBtn>
+
+...React is declarative for the most part?
+Well mostly with components... you gotta still tell how you want a state to act.
+
+this.setState({
+  highlight: !this.state.highlight,
+  buttonText: this.state.buttonText === 'addHighlight'
+    ? 'rmHighlight'
+    : 'addHighlight'
+})
+
+*** COMPOSITION ***
+React makes you think in terms of components
+
+*** EXPLICIT MUTATION ***
+Unlike Angular 1, you need to call setState to change the view
+
+this.setState({
+  highlight: !this.state.highlight,
+  buttonText: this.state.buttonText === 'addHighlight'
+    ? 'rmHighlight'
+    : 'addHighlight'
+})
+
+*** IT'S JUST JAVASCRIPT ***
+
+var listItem = this.props.items.map(function(item, index){
+  return (
+    <li style={styles.listGroup}>
+      <button
+        style={styles.removeItem}
+        onClick={this.props.remove.bind(null, index)}/>
+        <span>
+        {item}
+        </span>
+    </li>
+  )
+}.bind(this));
